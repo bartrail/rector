@@ -3,10 +3,11 @@
 declare(strict_types=1);
 
 use Rector\Downgrade\Rector\Property\DowngradeTypedPropertyRector;
+use Rector\Downgrade\Rector\Property\DowngradeUnionTypeToDocBlockRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
-
     $services->set(DowngradeTypedPropertyRector::class);
+    $services->set(DowngradeUnionTypeToDocBlockRector::class);
 };

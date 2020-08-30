@@ -77,7 +77,7 @@
 
 ### `MoveRepositoryFromParentToConstructorRector`
 
-- class: [`Rector\Architecture\Rector\Class_\MoveRepositoryFromParentToConstructorRector`](/../master/rules/architecture/src/Rector/Class_/MoveRepositoryFromParentToConstructorRector.php)
+- class: [`Rector\DoctrineCodeQuality\Rector\Class_\MoveRepositoryFromParentToConstructorRector`](/../master/rules/architecture/src/Rector/Class_/MoveRepositoryFromParentToConstructorRector.php)
 
 Turns parent EntityRepository class to constructor dependency
 

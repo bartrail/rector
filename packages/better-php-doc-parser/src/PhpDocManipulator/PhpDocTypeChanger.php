@@ -108,6 +108,9 @@ final class PhpDocTypeChanger
             $attributeAwareReturnTagValueNode = new AttributeAwareReturnTagValueNode($newPHPStanPhpDocType, '');
             $phpDocInfo->addTagValueNode($attributeAwareReturnTagValueNode);
         }
+
+        // notify about node change
+        $this->notifyChange();
     }
 
     public function changeParamType(PhpDocInfo $phpDocInfo, Type $type, Param $param, string $paramName): void
@@ -119,12 +122,13 @@ final class PhpDocTypeChanger
         // override existing type
         if ($paramTagValueNode !== null) {
             $paramTagValueNode->type = $phpDocType;
-            return;
+        } else {
+            $paramTagValueNode = $this->paramPhpDocNodeFactory->create($type, $param);
+            $phpDocInfo->addTagValueNode($paramTagValueNode);
         }
 
-        $paramTagValueNode = $this->paramPhpDocNodeFactory->create($type, $param);
-
-        $phpDocInfo->addTagValueNode($paramTagValueNode);
+        // notify about node change
+        $this->notifyChange();
     }
 
     private function notifyChange(): void
