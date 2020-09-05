@@ -47,15 +47,15 @@ final class ValidateFixtureContentCommand extends Command
     {
         $hasError = false;
 
-        foreach ($this->getFixtureFileInfos() as $fixtureFileInfo) {
-            if (! $this->hasFileIdenticalCodeBeforeAndAfter($fixtureFileInfo)) {
+        foreach ($this->getFixtureFileInfos() as $fixtureFileInfos) {
+            if (! $this->hasFileIdenticalCodeBeforeAndAfter($fixtureFileInfos)) {
                 continue;
             }
 
             // files content is equal, but it should not
             $message = sprintf(
                 'The "%s" file has same content before and after. Remove the 2nd half of the file.',
-                $fixtureFileInfo->getRelativeFilePathFromCwd()
+                $fixtureFileInfos->getRelativeFilePathFromCwd()
             );
 
             $this->symfonyStyle->error($message);

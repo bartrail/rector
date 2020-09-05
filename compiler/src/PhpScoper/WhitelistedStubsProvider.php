@@ -28,9 +28,9 @@ final class WhitelistedStubsProvider
                 ->in($stubsDirectory)
                 ->notName('#PhpStormStubsMap\.php$#');
 
-            foreach ($stubFinder->getIterator() as $fileInfo) {
-                /** @var SplFileInfo $fileInfo */
-                $stubs[] = $fileInfo->getPathName();
+            foreach ($stubFinder->getIterator() as $iterator) {
+                /** @var SplFileInfo $iterator */
+                $stubs[] = $iterator->getPathName();
             }
         }
 

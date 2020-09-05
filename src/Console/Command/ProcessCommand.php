@@ -310,8 +310,8 @@ final class ProcessCommand extends AbstractCommand
             return;
         }
 
-        foreach ($this->errorAndDiffCollector->getAffectedFileInfos() as $affectedFileInfo) {
-            $this->changedFilesDetector->invalidateFile($affectedFileInfo);
+        foreach ($this->errorAndDiffCollector->getAffectedFileInfos() as $affectedFileInfos) {
+            $this->changedFilesDetector->invalidateFile($affectedFileInfos);
         }
     }
 }
